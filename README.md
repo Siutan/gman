@@ -31,7 +31,7 @@ To add a new GitHub account:
 gman add
 ```
 
-Follow the prompts and enter the username, and personal access token for the GitHub account. The username is used to identify the account.
+Follow the prompts and enter the username, and personal access token for the GitHub account. The username is used to identify the account. Find out how to get your access token [Here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 ### Listing Accounts
 
