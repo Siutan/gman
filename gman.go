@@ -17,9 +17,9 @@ func main() {
 	if len(os.Args) == 0 {
 		fmt.Println("Usage: go gman <command> [options]")
 		fmt.Println("Available commands:")
-		fmt.Println("  switch <alias> - Switch to the specified GitHub account")
+		fmt.Println("  switch <username> - Switch to the specified GitHub account")
 		fmt.Println("  add            - Add a new GitHub account")
-		fmt.Println("  remove <alias> - Remove an existing GitHub account")
+		fmt.Println("  remove <username> - Remove an existing GitHub account")
 		return
 	}
 
@@ -28,7 +28,7 @@ func main() {
 	switch command {
 	case "switch":
 		if len(os.Args) < 2 {
-			fmt.Println("Usage: go gman switch <alias>")
+			fmt.Println("Usage: gman switch <username>")
 			return
 		}
 		alias := os.Args[2]
@@ -37,7 +37,7 @@ func main() {
 		addAccount()
 	case "remove":
 		if len(os.Args) < 2 {
-			fmt.Println("Usage: go gman remove <alias>")
+			fmt.Println("Usage: gman remove <username>")
 			return
 		}
 		alias := os.Args[2]
@@ -106,6 +106,14 @@ func addAccount() {
 }
 
 func removeAccount(alias string) {
+	// prompt for confirmation
+	fmt.Printf("Are you sure you want to delete '%s' GitHub account? (y/n) ", alias)
+	var confirmation string
+	fmt.Scanln(&confirmation)
+	if confirmation != "y" {
+		fmt.Printf("%s GitHub account not removed.\n", alias)
+		return
+	}
 	credentialName := getCredentialName(alias)
 	cred, err := wincred.GetGenericCredential(credentialName)
 	if err != nil {
