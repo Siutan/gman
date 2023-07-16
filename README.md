@@ -91,7 +91,7 @@ Encryption will be added in a future release.
 - [ ] Add support for aliases
 - [ ] Add edit command to edit the stored account details
 - [x] Add list command to list all the stored accounts
-
+- [ ] Add repo config command to see which account is being used for a repository
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
