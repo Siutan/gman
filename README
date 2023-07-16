@@ -1,3 +1,4 @@
+
 # GitHub Account Manager (gman)
 
 gman is a command-line tool for managing multiple GitHub accounts on Windows. It allows you to easily switch between different GitHub accounts based on aliases, add new accounts, and remove existing accounts. The tool securely stores the account details in the Windows Credential Manager.
@@ -10,7 +11,7 @@ gman is a command-line tool for managing multiple GitHub accounts on Windows. It
 
 ## Installation
 
-1. Download the latest release of gman from the [Releases](https://github.com/yourusername/gman/releases) page.
+1. Download the latest release of gman from the [Releases](https://github.com/Siutan/gman/releases) page.
 2. Extract the downloaded archive to a location of your choice.
 3. Add the location of the extracted archive to the system's PATH environment variable if you want to be able to run the script from any location in the command-line.
 
