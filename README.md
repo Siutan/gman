@@ -18,7 +18,7 @@ gman is a command-line tool for managing multiple GitHub accounts on Windows. It
 Alternatively, you can build the script from source using the Go programming language:
 
 ```
-go build -o gman main.go
+go build -o gman gman.go
 ```
 
 ## Usage
