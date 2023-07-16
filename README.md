@@ -68,6 +68,15 @@ To see the available commands and their usage:
 
 ```
 gman
+
+```
+
+### Check version
+
+To see the current verison of gman run:
+```
+gman version
+
 ```
 
 ## Security
