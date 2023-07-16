@@ -18,7 +18,7 @@ gman is a command-line tool for managing multiple GitHub accounts on Windows. It
 Alternatively, you can build the script from source using the Go programming language:
 
 ```
-go build -o gman main.go
+go build -o gman gman.go
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ To add a new GitHub account:
 gman add
 ```
 
-Follow the prompts and enter the username, and personal access token for the GitHub account. The username is used to identify the account.
+Follow the prompts and enter the username, and personal access token for the GitHub account. The username is used to identify the account. Find out how to get your access token [Here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 ### Listing Accounts
 
