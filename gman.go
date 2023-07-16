@@ -42,12 +42,27 @@ func main() {
 		}
 		alias := os.Args[2]
 		removeAccount(alias)
+	case "list":
+		listAccounts()
 	default:
 		fmt.Println("Invalid command.")
 	}
 }
 
 func switchAccount(alias string) {
+	// if current account is the same as the one we're switching to, do nothing
+	checkCmd := exec.Command("git", "config", "--global", "user.name")
+	currentUsername, err := checkCmd.Output()
+	if err != nil {
+		fmt.Println("Failed to switch GitHub account:", err)
+		return
+	}
+	currentUsername = []byte(strings.TrimSpace(string(currentUsername)))
+	if string(currentUsername) == alias {
+		fmt.Printf("Already using '%s' GitHub account.\n", alias)
+		return
+	}
+
 	credentialName := getCredentialName(alias)
 	cred, err := wincred.GetGenericCredential(credentialName)
 	if err != nil {
@@ -123,6 +138,27 @@ func removeAccount(alias string) {
 	cred.Delete()
 
 	fmt.Printf("Deleted '%s' GitHub account.\n", alias)
+}
+
+func listAccounts() {
+	creds, err := wincred.List()
+	if err != nil {
+		fmt.Println("Failed to retrieve GitHub accounts:", err)
+		return
+	}
+
+	if len(creds) == 0 {
+		fmt.Println("No GitHub accounts found.")
+		return
+	}
+
+	fmt.Println("GitHub Accounts:")
+	for _, cred := range creds {
+		if strings.HasPrefix(cred.TargetName, credentialTarget) {
+			fmt.Printf("  Username: %s\n", cred.UserName)
+			fmt.Println()
+		}
+	}
 }
 
 func getCredentialName(alias string) string {
